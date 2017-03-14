@@ -5,8 +5,9 @@ obj/
 *.vsp
 *.psess
 _ReSharper*
-[Ee]xpress
-[Bb]in
-[Oo]bj
-*.[Cc]ache
+[Ee]xpress/
+[Bb]in/
+[Oo]bj/
+[Cc]ache/
+[Pp]ackages/
 stylecop.*
