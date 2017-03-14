@@ -1,6 +1,8 @@
 ﻿Imports System.IO
 
 Module FileHelper
+    Private Const _FilePath As String = "recent.x"
+
     ''' <summary>
     ''' Save the current file, without overwriting any previous versions.
     ''' </summary>
@@ -21,5 +23,38 @@ Module FileHelper
         Else
             File.Move(path & ext, path & "____" & num & ext)
         End If
+    End Sub
+
+    ''' <summary>
+    ''' Get the most recently used filepath for replacement audio.
+    ''' </summary>
+    ''' <returns>The most recently used filepath for replacement audio. Returns Nothing if no file exists.</returns>
+    Public Function GetMostRecentPath() As String
+        GetMostRecentPath = Nothing
+
+        If File.Exists(_FilePath) Then
+            Using sr = New StreamReader(_FilePath)
+                Dim testPath = sr.ReadLine()
+
+                If Directory.Exists(testPath) Then
+                    GetMostRecentPath = testPath
+                End If
+            End Using
+        End If
+    End Function
+
+    ''' <summary>
+    ''' Write the most recently used filepath, for replacement audio, to file.
+    ''' </summary>
+    ''' <param name="path">The path to the recently used filepath, for replacement audio.</param>
+    Public Sub SetMostRecentPath(ByVal path As String)
+        If File.Exists(_FilePath) Then
+            File.Delete(_FilePath)
+        End If
+
+        Using sw As New StreamWriter(_FilePath)
+            sw.Write(path)
+            sw.Close()
+        End Using
     End Sub
 End Module

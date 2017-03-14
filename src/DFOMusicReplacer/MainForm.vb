@@ -34,7 +34,12 @@ Public Class MainForm
             Close()
         End If
 
+        _RepPath = FileHelper.GetMostRecentPath()
         lvOriginalMusic.LoadItemsFromDirectory(_DFOPath)
+
+        If Not _RepPath.IsNullOrWhiteSpace Then
+            lvRepMusic.LoadItemsFromDirectory(_RepPath)
+        End If
     End Sub
 #End Region
 
@@ -218,7 +223,7 @@ Public Class MainForm
     End Sub
 
     Private Sub btnHelp_Click(sender As Object, e As EventArgs) Handles btnHelp.Click
-        MessageBox.Show("You thought it was a help page, but it was actually just me! Taz!")
+        MessageBox.Show("You thought it was a help page, but it was actually just me! Taz!" & vbCrLf & "This software uses libraries from the FFmpeg project under the LGPLv2.1")
 
         If (File.Exists("__README__.txt")) Then
             Process.Start("__README__.txt")

@@ -14,15 +14,19 @@ Module OpenFileDialogExtensions
     ''' <returns>Empty string, if closed or no item selected, file path of the item selected otherwise.</returns>
     <Extension()>
     Public Function GetFilePath(ByRef ofd As OpenFileDialog, ByVal allowedExt As String, ByVal defExt As String, ByVal title As String) As String
+        Dim mostRecentPath = FileHelper.GetMostRecentPath()
+        Dim baseDrivePath = Directory.GetCurrentDirectory().Substring(0, Directory.GetCurrentDirectory().IndexOf("\")) '[Drive]:\
+
         With ofd
             .DefaultExt = defExt
             .Filter = allowedExt
-            .InitialDirectory = Directory.GetCurrentDirectory().Substring(0, 3) ' [Drive]:\
+            .InitialDirectory = IIf(mostRecentPath.IsNullOrWhiteSpace, baseDrivePath, mostRecentPath)
             .Title = title
 
             Dim result As DialogResult = .ShowDialog()
             If (Not (result = DialogResult.Cancel) And .CheckFileExists) Then
                 GetFilePath = .FileName.Substring(0, .FileName.LastIndexOf("\"))
+                FileHelper.SetMostRecentPath(GetFilePath & "\")
             Else ' They probably closed the dialog
                 GetFilePath = String.Empty
             End If
