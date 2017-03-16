@@ -1,11 +1,10 @@
 # DFO Music Changer
-VB.NET project to practice VB.NET, and to help people swap out their DFO music for their own music.
 
 Don't care about the code? Just want the program?
-=================================================
+-------------------------------------------------
 * [Here you go](https://github.com/Theta-Z/DFO-Music-Changer/blob/master/versions/DFOMusicChanger_v2.1.rar?raw=true)
 
-
+-----------------
 Technologies
 ============
 
