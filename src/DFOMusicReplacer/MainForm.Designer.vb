@@ -34,7 +34,6 @@ Partial Class MainForm
         Me.lvRepMusic = New System.Windows.Forms.ListView()
         Me.lvOriginalMusic = New System.Windows.Forms.ListView()
         Me.pnlConverting = New System.Windows.Forms.Panel()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.pbLoad = New System.Windows.Forms.PictureBox()
         Me.tbVolume = New System.Windows.Forms.TrackBar()
         Me.txtVolumeControl = New System.Windows.Forms.TextBox()
@@ -45,6 +44,7 @@ Partial Class MainForm
         Me.txtReplacementMsg = New System.Windows.Forms.TextBox()
         Me.chkBackup = New System.Windows.Forms.CheckBox()
         Me.pnlBottomArea = New System.Windows.Forms.Panel()
+        Me.txtConversion = New System.Windows.Forms.TextBox()
         Me.gbAvailableMusic.SuspendLayout()
         Me.pnlConverting.SuspendLayout()
         CType(Me.pbLoad, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -161,22 +161,13 @@ Partial Class MainForm
         '
         Me.pnlConverting.BackColor = System.Drawing.SystemColors.Control
         Me.pnlConverting.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.pnlConverting.Controls.Add(Me.Label1)
+        Me.pnlConverting.Controls.Add(Me.txtConversion)
         Me.pnlConverting.Controls.Add(Me.pbLoad)
         Me.pnlConverting.Location = New System.Drawing.Point(164, 163)
         Me.pnlConverting.Name = "pnlConverting"
         Me.pnlConverting.Size = New System.Drawing.Size(405, 88)
         Me.pnlConverting.TabIndex = 14
         Me.pnlConverting.Visible = False
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(115, 18)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(177, 13)
-        Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Oh man.. We're working hard today!"
         '
         'pbLoad
         '
@@ -288,6 +279,17 @@ Partial Class MainForm
         Me.pnlBottomArea.Size = New System.Drawing.Size(759, 107)
         Me.pnlBottomArea.TabIndex = 15
         '
+        'txtConversion
+        '
+        Me.txtConversion.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtConversion.Location = New System.Drawing.Point(3, 14)
+        Me.txtConversion.Name = "txtConversion"
+        Me.txtConversion.ReadOnly = True
+        Me.txtConversion.Size = New System.Drawing.Size(397, 13)
+        Me.txtConversion.TabIndex = 1
+        Me.txtConversion.Text = "what ever will we put here..."
+        Me.txtConversion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -334,6 +336,6 @@ Partial Class MainForm
     Friend WithEvents btnHelp As Button
     Friend WithEvents pnlConverting As Panel
     Friend WithEvents pbLoad As PictureBox
-    Friend WithEvents Label1 As Label
     Friend WithEvents pnlBottomArea As Panel
+    Friend WithEvents txtConversion As TextBox
 End Class

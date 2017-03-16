@@ -6,6 +6,7 @@ Friend Class AudioService
     Private _AudioPlayer As NAudio.Wave.WaveOut
     Private _AudioReader As NAudio.Vorbis.VorbisWaveReader
     Private _AudioThread As Thread = New Thread(AddressOf AudioTick)
+    Private _AudioVolume As Single = 1
 
     Public Delegate Sub MultiThreadSub()
     Public Delegate Sub PostConversion(ByVal fileName As String)
@@ -34,7 +35,7 @@ Friend Class AudioService
     ''' <summary>
     ''' The last music played within the DFO area.
     ''' </summary>
-    Public Property LastDFO As String = "Please Select a DFO Track"
+    Public Property LastDFO As String = My.Resources.ResData.DefaultReplacementDFO
 
     ''' <summary>
     ''' The last played music.
@@ -45,7 +46,7 @@ Friend Class AudioService
     ''' <summary>
     ''' The last music played within the replacement folder.
     ''' </summary>
-    Public Property LastRep As String = "Please Select a Replacement Track"
+    Public Property LastRep As String = My.Resources.ResData.DefaultReplacementRep
 
     ''' <summary>
     ''' When the audio finishes, will we repeat it.
@@ -62,12 +63,13 @@ Friend Class AudioService
     ''' </summary>
     Public Property Volume As Single
         Get
-            Return If(_AudioPlayer?.Volume, 1)
+            Return If(_AudioPlayer?.Volume, _AudioVolume)
         End Get
         Set(value As Single)
             If _AudioInit Then
                 _AudioPlayer.Volume = value
             End If
+            _AudioVolume = value
         End Set
     End Property
 #End Region 'Properties
