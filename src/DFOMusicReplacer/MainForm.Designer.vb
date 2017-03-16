@@ -22,7 +22,6 @@ Partial Class MainForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainForm))
         Me.gbAvailableMusic = New System.Windows.Forms.GroupBox()
         Me.btnHelp = New System.Windows.Forms.Button()
@@ -34,27 +33,27 @@ Partial Class MainForm
         Me.txtDfoMusic = New System.Windows.Forms.TextBox()
         Me.lvRepMusic = New System.Windows.Forms.ListView()
         Me.lvOriginalMusic = New System.Windows.Forms.ListView()
+        Me.pnlConverting = New System.Windows.Forms.Panel()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.pbLoad = New System.Windows.Forms.PictureBox()
         Me.tbVolume = New System.Windows.Forms.TrackBar()
         Me.txtVolumeControl = New System.Windows.Forms.TextBox()
         Me.btnPause = New System.Windows.Forms.Button()
-        Me.tmrMusicUpdate = New System.Windows.Forms.Timer(Me.components)
         Me.txtMusicProgress = New System.Windows.Forms.TextBox()
         Me.chkRepeatMusic = New System.Windows.Forms.CheckBox()
         Me.btnReplace = New System.Windows.Forms.Button()
         Me.txtReplacementMsg = New System.Windows.Forms.TextBox()
         Me.chkBackup = New System.Windows.Forms.CheckBox()
-        Me.pnlConverting = New System.Windows.Forms.Panel()
-        Me.pbLoad = New System.Windows.Forms.PictureBox()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.pnlBottomArea = New System.Windows.Forms.Panel()
         Me.gbAvailableMusic.SuspendLayout()
-        CType(Me.tbVolume, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlConverting.SuspendLayout()
         CType(Me.pbLoad, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.tbVolume, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlBottomArea.SuspendLayout()
         Me.SuspendLayout()
         '
         'gbAvailableMusic
         '
-        Me.gbAvailableMusic.Controls.Add(Me.pnlConverting)
         Me.gbAvailableMusic.Controls.Add(Me.btnHelp)
         Me.gbAvailableMusic.Controls.Add(Me.btnUndoAll)
         Me.gbAvailableMusic.Controls.Add(Me.btnLoadRep)
@@ -141,6 +140,7 @@ Partial Class MainForm
         'lvRepMusic
         '
         Me.lvRepMusic.Location = New System.Drawing.Point(6, 46)
+        Me.lvRepMusic.MultiSelect = False
         Me.lvRepMusic.Name = "lvRepMusic"
         Me.lvRepMusic.Size = New System.Drawing.Size(320, 328)
         Me.lvRepMusic.TabIndex = 1
@@ -157,93 +157,6 @@ Partial Class MainForm
         Me.lvOriginalMusic.UseCompatibleStateImageBehavior = False
         Me.lvOriginalMusic.View = System.Windows.Forms.View.Details
         '
-        'tbVolume
-        '
-        Me.tbVolume.Location = New System.Drawing.Point(569, 431)
-        Me.tbVolume.Minimum = 1
-        Me.tbVolume.Name = "tbVolume"
-        Me.tbVolume.Size = New System.Drawing.Size(170, 45)
-        Me.tbVolume.TabIndex = 1
-        Me.tbVolume.Value = 10
-        '
-        'txtVolumeControl
-        '
-        Me.txtVolumeControl.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txtVolumeControl.Location = New System.Drawing.Point(569, 420)
-        Me.txtVolumeControl.Name = "txtVolumeControl"
-        Me.txtVolumeControl.ReadOnly = True
-        Me.txtVolumeControl.Size = New System.Drawing.Size(170, 13)
-        Me.txtVolumeControl.TabIndex = 6
-        Me.txtVolumeControl.Text = "Volume: 100%"
-        Me.txtVolumeControl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'btnPause
-        '
-        Me.btnPause.Location = New System.Drawing.Point(569, 462)
-        Me.btnPause.Name = "btnPause"
-        Me.btnPause.Size = New System.Drawing.Size(170, 25)
-        Me.btnPause.TabIndex = 7
-        Me.btnPause.Text = "Pause Music"
-        Me.btnPause.UseVisualStyleBackColor = True
-        '
-        'tmrMusicUpdate
-        '
-        '
-        'txtMusicProgress
-        '
-        Me.txtMusicProgress.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txtMusicProgress.Location = New System.Drawing.Point(569, 487)
-        Me.txtMusicProgress.Name = "txtMusicProgress"
-        Me.txtMusicProgress.ReadOnly = True
-        Me.txtMusicProgress.Size = New System.Drawing.Size(170, 13)
-        Me.txtMusicProgress.TabIndex = 8
-        Me.txtMusicProgress.Text = ":"
-        Me.txtMusicProgress.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'chkRepeatMusic
-        '
-        Me.chkRepeatMusic.AutoSize = True
-        Me.chkRepeatMusic.Location = New System.Drawing.Point(606, 506)
-        Me.chkRepeatMusic.Name = "chkRepeatMusic"
-        Me.chkRepeatMusic.Size = New System.Drawing.Size(92, 17)
-        Me.chkRepeatMusic.TabIndex = 9
-        Me.chkRepeatMusic.Text = "Repeat Music"
-        Me.chkRepeatMusic.UseVisualStyleBackColor = True
-        '
-        'btnReplace
-        '
-        Me.btnReplace.Enabled = False
-        Me.btnReplace.Location = New System.Drawing.Point(134, 480)
-        Me.btnReplace.Name = "btnReplace"
-        Me.btnReplace.Size = New System.Drawing.Size(75, 23)
-        Me.btnReplace.TabIndex = 7
-        Me.btnReplace.Text = "Do It!"
-        Me.btnReplace.UseVisualStyleBackColor = True
-        '
-        'txtReplacementMsg
-        '
-        Me.txtReplacementMsg.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txtReplacementMsg.Location = New System.Drawing.Point(4, 433)
-        Me.txtReplacementMsg.Multiline = True
-        Me.txtReplacementMsg.Name = "txtReplacementMsg"
-        Me.txtReplacementMsg.ReadOnly = True
-        Me.txtReplacementMsg.Size = New System.Drawing.Size(334, 39)
-        Me.txtReplacementMsg.TabIndex = 10
-        Me.txtReplacementMsg.Text = "Please Select a DFO Track" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Please Select a Replacement Track"
-        Me.txtReplacementMsg.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'chkBackup
-        '
-        Me.chkBackup.AutoSize = True
-        Me.chkBackup.Checked = True
-        Me.chkBackup.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkBackup.Location = New System.Drawing.Point(86, 503)
-        Me.chkBackup.Name = "chkBackup"
-        Me.chkBackup.Size = New System.Drawing.Size(174, 17)
-        Me.chkBackup.TabIndex = 11
-        Me.chkBackup.Text = "Keep a Copy of Old DFO Music"
-        Me.chkBackup.UseVisualStyleBackColor = True
-        '
         'pnlConverting
         '
         Me.pnlConverting.BackColor = System.Drawing.SystemColors.Control
@@ -256,6 +169,15 @@ Partial Class MainForm
         Me.pnlConverting.TabIndex = 14
         Me.pnlConverting.Visible = False
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(115, 18)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(177, 13)
+        Me.Label1.TabIndex = 1
+        Me.Label1.Text = "Oh man.. We're working hard today!"
+        '
         'pbLoad
         '
         Me.pbLoad.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
@@ -267,28 +189,112 @@ Partial Class MainForm
         Me.pbLoad.TabIndex = 0
         Me.pbLoad.TabStop = False
         '
-        'Label1
+        'tbVolume
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(107, 18)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(190, 13)
-        Me.Label1.TabIndex = 1
-        Me.Label1.Text = "I'm gonna just convert that real quick..."
+        Me.tbVolume.Location = New System.Drawing.Point(500, 16)
+        Me.tbVolume.Minimum = 1
+        Me.tbVolume.Name = "tbVolume"
+        Me.tbVolume.Size = New System.Drawing.Size(170, 45)
+        Me.tbVolume.TabIndex = 1
+        Me.tbVolume.Value = 10
+        '
+        'txtVolumeControl
+        '
+        Me.txtVolumeControl.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtVolumeControl.Location = New System.Drawing.Point(500, 5)
+        Me.txtVolumeControl.Name = "txtVolumeControl"
+        Me.txtVolumeControl.ReadOnly = True
+        Me.txtVolumeControl.Size = New System.Drawing.Size(170, 13)
+        Me.txtVolumeControl.TabIndex = 6
+        Me.txtVolumeControl.Text = "Volume: 100%"
+        Me.txtVolumeControl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'btnPause
+        '
+        Me.btnPause.Location = New System.Drawing.Point(500, 47)
+        Me.btnPause.Name = "btnPause"
+        Me.btnPause.Size = New System.Drawing.Size(170, 25)
+        Me.btnPause.TabIndex = 7
+        Me.btnPause.Text = "Pause Music"
+        Me.btnPause.UseVisualStyleBackColor = True
+        '
+        'txtMusicProgress
+        '
+        Me.txtMusicProgress.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtMusicProgress.Location = New System.Drawing.Point(500, 72)
+        Me.txtMusicProgress.Name = "txtMusicProgress"
+        Me.txtMusicProgress.ReadOnly = True
+        Me.txtMusicProgress.Size = New System.Drawing.Size(170, 13)
+        Me.txtMusicProgress.TabIndex = 8
+        Me.txtMusicProgress.Text = ":"
+        Me.txtMusicProgress.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'chkRepeatMusic
+        '
+        Me.chkRepeatMusic.AutoSize = True
+        Me.chkRepeatMusic.Location = New System.Drawing.Point(537, 88)
+        Me.chkRepeatMusic.Name = "chkRepeatMusic"
+        Me.chkRepeatMusic.Size = New System.Drawing.Size(92, 17)
+        Me.chkRepeatMusic.TabIndex = 9
+        Me.chkRepeatMusic.Text = "Repeat Music"
+        Me.chkRepeatMusic.UseVisualStyleBackColor = True
+        '
+        'btnReplace
+        '
+        Me.btnReplace.Enabled = False
+        Me.btnReplace.Location = New System.Drawing.Point(139, 62)
+        Me.btnReplace.Name = "btnReplace"
+        Me.btnReplace.Size = New System.Drawing.Size(75, 23)
+        Me.btnReplace.TabIndex = 7
+        Me.btnReplace.Text = "Do It!"
+        Me.btnReplace.UseVisualStyleBackColor = True
+        '
+        'txtReplacementMsg
+        '
+        Me.txtReplacementMsg.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtReplacementMsg.Location = New System.Drawing.Point(15, 15)
+        Me.txtReplacementMsg.Multiline = True
+        Me.txtReplacementMsg.Name = "txtReplacementMsg"
+        Me.txtReplacementMsg.ReadOnly = True
+        Me.txtReplacementMsg.Size = New System.Drawing.Size(326, 39)
+        Me.txtReplacementMsg.TabIndex = 10
+        Me.txtReplacementMsg.Text = "Please Select a DFO Track" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Please Select a Replacement Track"
+        Me.txtReplacementMsg.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'chkBackup
+        '
+        Me.chkBackup.AutoSize = True
+        Me.chkBackup.Checked = True
+        Me.chkBackup.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkBackup.Location = New System.Drawing.Point(91, 85)
+        Me.chkBackup.Name = "chkBackup"
+        Me.chkBackup.Size = New System.Drawing.Size(174, 17)
+        Me.chkBackup.TabIndex = 11
+        Me.chkBackup.Text = "Keep a Copy of Old DFO Music"
+        Me.chkBackup.UseVisualStyleBackColor = True
+        '
+        'pnlBottomArea
+        '
+        Me.pnlBottomArea.Controls.Add(Me.btnPause)
+        Me.pnlBottomArea.Controls.Add(Me.txtReplacementMsg)
+        Me.pnlBottomArea.Controls.Add(Me.chkBackup)
+        Me.pnlBottomArea.Controls.Add(Me.tbVolume)
+        Me.pnlBottomArea.Controls.Add(Me.txtVolumeControl)
+        Me.pnlBottomArea.Controls.Add(Me.btnReplace)
+        Me.pnlBottomArea.Controls.Add(Me.chkRepeatMusic)
+        Me.pnlBottomArea.Controls.Add(Me.txtMusicProgress)
+        Me.pnlBottomArea.Location = New System.Drawing.Point(-3, 418)
+        Me.pnlBottomArea.Name = "pnlBottomArea"
+        Me.pnlBottomArea.Size = New System.Drawing.Size(759, 107)
+        Me.pnlBottomArea.TabIndex = 15
         '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(757, 525)
-        Me.Controls.Add(Me.chkBackup)
-        Me.Controls.Add(Me.txtReplacementMsg)
-        Me.Controls.Add(Me.btnReplace)
-        Me.Controls.Add(Me.chkRepeatMusic)
-        Me.Controls.Add(Me.txtMusicProgress)
-        Me.Controls.Add(Me.btnPause)
-        Me.Controls.Add(Me.txtVolumeControl)
-        Me.Controls.Add(Me.tbVolume)
+        Me.Controls.Add(Me.pnlBottomArea)
+        Me.Controls.Add(Me.pnlConverting)
         Me.Controls.Add(Me.gbAvailableMusic)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
@@ -298,12 +304,13 @@ Partial Class MainForm
         Me.Text = "DFO Music Replacer"
         Me.gbAvailableMusic.ResumeLayout(False)
         Me.gbAvailableMusic.PerformLayout()
-        CType(Me.tbVolume, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlConverting.ResumeLayout(False)
         Me.pnlConverting.PerformLayout()
         CType(Me.pbLoad, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.tbVolume, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlBottomArea.ResumeLayout(False)
+        Me.pnlBottomArea.PerformLayout()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
 
@@ -317,7 +324,6 @@ Partial Class MainForm
     Friend WithEvents tbVolume As TrackBar
     Friend WithEvents txtVolumeControl As TextBox
     Friend WithEvents btnPause As Button
-    Friend WithEvents tmrMusicUpdate As Timer
     Friend WithEvents txtMusicProgress As TextBox
     Friend WithEvents chkRepeatMusic As CheckBox
     Friend WithEvents btnLoadRep As Button
@@ -329,4 +335,5 @@ Partial Class MainForm
     Friend WithEvents pnlConverting As Panel
     Friend WithEvents pbLoad As PictureBox
     Friend WithEvents Label1 As Label
+    Friend WithEvents pnlBottomArea As Panel
 End Class

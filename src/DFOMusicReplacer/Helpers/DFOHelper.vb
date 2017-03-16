@@ -1,6 +1,6 @@
 ﻿Imports Microsoft.Win32
 
-Public Module DFOHelper
+Friend Module DFOHelper
     Private Const _ChooseFile As String =
         "No path detected." & vbCrLf &
         "Please select a music file from within your DFO folder." & vbCrLf &

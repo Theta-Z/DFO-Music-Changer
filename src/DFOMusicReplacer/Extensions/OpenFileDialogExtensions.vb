@@ -1,7 +1,7 @@
 ﻿Imports System.IO
 Imports System.Runtime.CompilerServices
 
-Module OpenFileDialogExtensions
+Friend Module OpenFileDialogExtensions
     ''' <summary>
     ''' Get the filepath of the file chosen by the OpenFileDialog.
     ''' This method will show the dialog & return the file path, if they close dialog without choosing an item,
@@ -24,7 +24,7 @@ Module OpenFileDialogExtensions
             .Title = title
 
             Dim result As DialogResult = .ShowDialog()
-            If (Not (result = DialogResult.Cancel) And .CheckFileExists) Then
+            If result <> DialogResult.Cancel And .CheckFileExists Then
                 GetFilePath = .FileName.Substring(0, .FileName.LastIndexOf("\"))
                 FileHelper.SetMostRecentPath(GetFilePath & "\")
             Else ' They probably closed the dialog

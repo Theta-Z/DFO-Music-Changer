@@ -1,16 +1,16 @@
 ﻿Imports System.IO
 Imports System.Runtime.CompilerServices
 
-Module ListViewExtensions
+Friend Module ListViewExtensions
     ''' <summary>
     ''' Default extension support is m4a, ogg, and mp3.
     ''' </summary>
     ''' <param name="item">the current file to check against.</param>
     ''' <returns>Whether or not this file is supported</returns>
     Private Function ExtensionSupported(ByVal item As String) As Boolean
-        If (item.EndsWith(".m4a", StringComparison.InvariantCultureIgnoreCase) Or
-            item.EndsWith(".mp3", StringComparison.InvariantCultureIgnoreCase) Or
-            item.EndsWith(".ogg", StringComparison.InvariantCultureIgnoreCase)) Then
+        If item.EndsWith(".m4a", StringComparison.InvariantCultureIgnoreCase) Or
+           item.EndsWith(".mp3", StringComparison.InvariantCultureIgnoreCase) Or
+           item.EndsWith(".ogg", StringComparison.InvariantCultureIgnoreCase) Then
             ExtensionSupported = True
         Else
             ExtensionSupported = False

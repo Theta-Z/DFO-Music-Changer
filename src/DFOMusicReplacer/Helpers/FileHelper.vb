@@ -1,6 +1,6 @@
 ﻿Imports System.IO
 
-Module FileHelper
+Friend Module FileHelper
     Private Const _FilePath As String = "recent.x"
 
     ''' <summary>
