@@ -41,6 +41,10 @@ Public Class MainForm
         If Not _AudioService.RepPath.IsNullOrWhiteSpace Then
             lvRepMusic.LoadItemsFromDirectory(_AudioService.RepPath)
         End If
+
+        If Not Directory.Exists("Logs") Then
+            Directory.CreateDirectory("Logs")
+        End If
     End Sub
 
     ''' <summary>

@@ -1,4 +1,5 @@
-﻿Imports System.Runtime.CompilerServices
+﻿Imports System.IO
+Imports System.Runtime.CompilerServices
 Imports System.Threading
 
 Friend Module StringExtensions
@@ -48,5 +49,20 @@ Friend Module StringExtensions
     <Extension()>
     Public Sub ReleaseLock(ByRef s As String)
         Monitor.Exit(s)
+    End Sub
+
+    ''' <summary>
+    ''' Write the contents of s to a file located at path.
+    ''' </summary>
+    ''' <param name="s">The string to write.</param>
+    ''' <param name="path">The path to write to.</param>
+    ''' <param name="overwrite">Overwrite the specified file?</param>
+    <Extension()>
+    Public Sub WriteTextToFile(ByRef s As String, ByVal path As String, Optional ByVal overwrite As Boolean = False)
+        Using sw As New StreamWriter(path, Not (overwrite))
+            sw.WriteLine(s)
+            sw.WriteLine()
+            sw.Close()
+        End Using
     End Sub
 End Module

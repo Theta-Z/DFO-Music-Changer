@@ -16,14 +16,29 @@ Friend Module AudioHelper
         End If
 
         Dim outputFile As String = fileName.Substring(0, fileName.LastIndexOf(".")) & ".ogg"
-        Dim args As String = $"-y -i ""{fileName}"" -vn -c:a libvorbis -q:a 10 ""{outputFile}"""
+        Dim args As String = $"/c ffmpeg.exe -y -i ""{fileName}"" -vn -c:a libvorbis -q:a 10 ""{outputFile}"""
 
         Dim ffmpeg As Process = New Process()
-        ffmpeg.StartInfo.FileName = "ffmpeg.exe"
+        Dim currentTime = DateTime.Now
+        ffmpeg.StartInfo.FileName = "cmd.exe"
         ffmpeg.StartInfo.Arguments = args
-        ffmpeg.StartInfo.WindowStyle = ProcessWindowStyle.Hidden
+        ffmpeg.StartInfo.CreateNoWindow = True
+        ffmpeg.StartInfo.RedirectStandardError = True
+        ffmpeg.StartInfo.RedirectStandardOutput = True
+        ffmpeg.StartInfo.UseShellExecute = False
         ffmpeg.Start()
+
+        Dim output =
+            $"OUTPUT FOR TIME {currentTime.ToLocalTime()}" & vbCrLf &
+            "============================================" & vbCrLf &
+            ffmpeg.StandardOutput.ReadToEnd() &
+            "============================================" & vbCrLf &
+            $"STD ERR" & vbCrLf &
+            "============================================" & vbCrLf &
+            ffmpeg.StandardError.ReadToEnd()
+
         ffmpeg.WaitForExit()
+        output.WriteTextToFile($"Logs\{currentTime.Ticks.ToString()}.txt", True)
 
         If (File.Exists(outputFile)) Then
             ConvertToOgg = outputFile
