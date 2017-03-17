@@ -2,7 +2,7 @@
 
 Don't care about the code? Just want the program?
 -------------------------------------------------
-* [Here you go](https://github.com/Theta-Z/DFO-Music-Changer/blob/master/versions/DFOMusicChanger_v2.1.rar?raw=true)
+* [Here you go](https://github.com/Theta-Z/DFO-Music-Changer/blob/master/versions/DFOMusicChanger_v2.1.1.rar?raw=true)
 
 -----------------
 Technologies
